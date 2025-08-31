@@ -5,6 +5,60 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+// Simple Login Component
+const Login = ({ onLogin }) => {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === '2025') {
+      sessionStorage.setItem('school_auth', 'authenticated');
+      onLogin();
+      setError('');
+    } else {
+      setError('Mot de passe incorrect');
+      setPassword('');
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <h1>🏫 Suivi des Absences Scolaires</h1>
+          <p>Accès sécurisé pour le personnel enseignant</p>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Entrez le mot de passe"
+              required
+              autoFocus
+            />
+          </div>
+          
+          {error && <div className="error-message">{error}</div>}
+          
+          <button type="submit" className="login-btn">
+            🔐 Se connecter
+          </button>
+        </form>
+        
+        <div className="login-footer">
+          <p>Application sécurisée pour la gestion des absences</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // French class names
 const CLASSES = [
   "Salle 2", "Salle 5", "Salle 6", "Salle 7", "Salle 8", "Salle 9", 
