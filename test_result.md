@@ -146,15 +146,18 @@ backend:
 
   - task: "French date validation (DD/MM/YYYY)"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Date validation function implemented for DD/MM/YYYY format"
+        - working: true
+          agent: "testing"
+          comment: "✅ TESTED: French date validation working perfectly. Valid dates (31/08/2025, 01/09/2025, 29/02/2024, 15/12/2025) accepted. Invalid dates (31/13/2025, 2025/08/31, 08/31/2025, 32/01/2025, 29/02/2025, 31/04/2025, invalid-date, 2025-08-31) properly rejected with 400 status. 12/12 tests passed."
 
   - task: "Statistics calculation (total, unjustified, recent absences)"
     implemented: true
