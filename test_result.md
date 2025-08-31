@@ -176,15 +176,18 @@ backend:
 
   - task: "Excel export functionality (individual and all classes)"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Excel export with xlsxwriter, individual class and summary sheets, unjustified absences highlighted"
+        - working: true
+          agent: "testing"
+          comment: "✅ TESTED: Excel export functionality working perfectly. Individual class export (/api/export/excel?classe=X) generates proper Excel files with correct content-type and filenames. All classes export (/api/export/excel) creates comprehensive file with summary sheet. Files contain actual data and proper headers. 12/12 tests passed."
 
 frontend:
   - task: "18 Class tabs navigation"
