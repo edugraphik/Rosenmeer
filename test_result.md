@@ -131,15 +131,18 @@ backend:
 
   - task: "Absence CRUD operations with French data structure"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Absence model with French fields implemented: date (DD/MM/YYYY), nom, prenom, motif (M/RDV/F/A), justifie (O/N), remarques"
+        - working: true
+          agent: "testing"
+          comment: "✅ TESTED: All CRUD operations working perfectly. Created/read/updated/deleted absences with French data structure (nom, prenom, motif, justifie). Tested with classes 'Salle 2', 'Nuage', 'Arc-en-ciel'. All French fields validated correctly. Class filtering works properly. 26/26 tests passed."
 
   - task: "French date validation (DD/MM/YYYY)"
     implemented: true
