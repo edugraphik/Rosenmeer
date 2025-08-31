@@ -367,10 +367,30 @@ function App() {
   const [absences, setAbsences] = useState([]);
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    loadData();
+    // Check if user is already authenticated
+    const authStatus = sessionStorage.getItem('school_auth');
+    if (authStatus === 'authenticated') {
+      setIsAuthenticated(true);
+      loadData();
+    } else {
+      setLoading(false);
+    }
   }, []);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    setLoading(true);
+    loadData();
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('school_auth');
+    setIsAuthenticated(false);
+    setActiveTab('home');
+  };
 
   const loadData = async () => {
     try {
@@ -409,6 +429,11 @@ function App() {
     window.open(url, '_blank');
   };
 
+  // Show login screen if not authenticated
+  if (!isAuthenticated) {
+    return <Login onLogin={handleLogin} />;
+  }
+
   if (loading) {
     return <div className="loading">Chargement...</div>;
   }
@@ -437,6 +462,13 @@ function App() {
             {classe}
           </button>
         ))}
+        <button 
+          className="tab logout-tab"
+          onClick={handleLogout}
+          title="Se déconnecter"
+        >
+          🚪 Déconnexion
+        </button>
       </nav>
 
       <div className="tab-content">
