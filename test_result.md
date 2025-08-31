@@ -161,15 +161,18 @@ backend:
 
   - task: "Statistics calculation (total, unjustified, recent absences)"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
           comment: "Statistics endpoint implemented with counts per class"
+        - working: true
+          agent: "testing"
+          comment: "✅ TESTED: Statistics calculation working perfectly. /api/stats endpoint returns data for all 18 classes. Correctly calculates total_absences, absences_non_justifiees, and absences_recentes for each class. All required fields present. Tested with real data showing accurate counts. 79/79 tests passed."
 
   - task: "Excel export functionality (individual and all classes)"
     implemented: true
