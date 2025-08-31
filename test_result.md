@@ -270,10 +270,6 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Absence CRUD operations with French data structure"
-    - "French date validation (DD/MM/YYYY)"
-    - "Statistics calculation (total, unjustified, recent absences)"
-    - "Excel export functionality (individual and all classes)"
     - "Absence entry form with French fields"
     - "Export functionality integration"
   stuck_tasks: []
